@@ -2,9 +2,9 @@ package com.galaxy.sagittarius.xrobot.webcontroller.domain;
 
 public class Motor extends Device {
     /// <summary>
-    /// 运行方向
+    /// 运行方向 -1:反方向 0：停止 1：正向
     /// </summary>
-    private boolean direction;
+    private int direction;
 
     /// <summary>
     /// 速度
@@ -15,11 +15,11 @@ public class Motor extends Device {
         this.setDeviceType("Motor");
     }
 
-    public boolean getDirection() {
+    public int getDirection() {
         return direction;
     }
 
-    public void setDirection(boolean direction) {
+    public void setDirection(int direction) {
         this.direction = direction;
     }
 
