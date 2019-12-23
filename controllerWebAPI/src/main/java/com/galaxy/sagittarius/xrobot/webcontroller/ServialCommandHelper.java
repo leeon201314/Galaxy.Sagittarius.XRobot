@@ -43,7 +43,6 @@ public class ServialCommandHelper {
         if (dataAvail > 0) {
             byte[] data = Serial.serialGetAvailableBytes(fd);
             String s = new String(data);
-            System.out.print("接收数据：");
             System.out.print(s);
         }
     }
