@@ -10,15 +10,15 @@ public class ServialCommandHelper {
     }
 
     public static void ReceiveData() {
+        System.out.println("begin receiveData!");
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("begin receiveData!");
-
                 while (true) {
-                    Receive();
                     try {
-                        Thread.sleep(2000);
+                        Receive();
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -30,13 +30,17 @@ public class ServialCommandHelper {
 
     public static void SendData(String data) {
         //String data = "#{\"sensor\":\"gps\",\"time\":1351824120,\"data\":[48.756080,2.302038]}";
-        Serial.serialPuts(fd, "#" + data);
+        try {
+            Serial.serialPuts(fd, "#" + data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void Receive() {
-        int dataavail = Serial.serialDataAvail(fd);
+        int dataAvail = Serial.serialDataAvail(fd);
 
-        if (dataavail > 0) {
+        if (dataAvail > 0) {
             byte[] data = Serial.serialGetAvailableBytes(fd);
             String s = new String(data);
             System.out.print(s);

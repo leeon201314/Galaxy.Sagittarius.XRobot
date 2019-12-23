@@ -7,11 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WebcontrollerApplication {
 
     public static void main(String[] args) {
-
         ServialCommandHelper.Init();
         ServialCommandHelper.ReceiveData();
 
         SpringApplication.run(WebcontrollerApplication.class, args);
     }
-
 }
