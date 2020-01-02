@@ -30,13 +30,13 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("xrobot Swagger")
+                .title("xrobot-智能军卡")
                 //创建人
                 .contact(new Contact("leeon", "http://www.leeon.cn", ""))
                 //版本号
                 .version("1.0")
                 //描述
-                .description("API 描述")
+                .description("智能军卡API描述")
                 .build();
     }
 }

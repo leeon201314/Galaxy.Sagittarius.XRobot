@@ -1,0 +1,14 @@
+<html>
+
+<body style="background-color:#888888"></body>
+<canvas id="joystick"></canvas>
+</body>
+<script type="text/javascript" src="joyStick.js"></script>
+
+<script>
+   var stick = new joyStick('#joystick', 300, function (data) {
+      console.log(data);
+   });
+</script>
+
+</html>

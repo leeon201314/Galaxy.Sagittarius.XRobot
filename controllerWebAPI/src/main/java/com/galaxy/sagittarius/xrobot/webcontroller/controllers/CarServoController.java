@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api("舵机api")
+@Api(tags = "卡车转向舵机api")
 @RestController
-@RequestMapping("/servo")
-public class ServoController {
+@RequestMapping("/carServo")
+public class CarServoController {
     /**
      * 前进
      */
-    @ApiOperation(value = "设置角度", notes = "设置角度")
-    @GetMapping("/setangle/{deviceNumber}/{angle}")
-    public JSONObject setAngle(@PathVariable(name = "deviceNumber") int deviceNumber, @PathVariable(name = "angle") int angle) {
+    @ApiOperation(value = "设置转向角度", notes = "设置转向角度，默认0号舵机是车辆舵机，-20到20度之间（转向角有点小）")
+    @GetMapping("/setangle/{angle}")
+    public JSONObject setAngle(@PathVariable(name = "angle") int angle) {
         Servo servo = new Servo();
-        servo.setDeviceNumber(deviceNumber);
-        int tempAngle = angle < -90 ? -90 : angle;
-        tempAngle = angle > 90 ? 90 : angle;
+        servo.setDeviceNumber(0); //默认0号舵机是车辆舵机
+        int tempAngle = angle < -20 ? -20 : angle;
+        tempAngle = angle > 20 ? 20 : angle;
         servo.setAngle(tempAngle);
         JSONObject commandJson = (JSONObject) JSONObject.toJSON(servo);
         ServialCommandHelper.SendData(commandJson.toJSONString());
