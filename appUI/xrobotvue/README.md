@@ -1,4 +1,4 @@
-# xrobot
+# xrobotvue
 
 > A Vue.js project
 

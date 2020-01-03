@@ -4,15 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import echarts from 'echarts'
-
 import Vant from 'vant'
-import 'vant/lib/index.css'
+
+import './assets/index.css'
 
 Vue.use(Vant)
 
-Vue.prototype.$echarts = echarts
-
 Vue.config.productionTip = false
+
+Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
 new Vue({
