@@ -10,7 +10,7 @@
       <van-col span="16"><van-slider :min="minSpeed" :max="maxSpeed" v-model="speed[0].value" @change="onSpeedChange" /></van-col>
     </van-row>
 
-    <van-radio-group v-model="direction">
+    <van-radio-group v-model="direction" @change="onSpeedChange">
         <van-row style="margin-top:30px;">
           <van-col span="6" offset="3"><van-radio name="1">前进</van-radio></van-col>
           <van-col span="6"><van-radio name="2">停止</van-radio></van-col>
@@ -23,14 +23,14 @@
 <script>
 
 import echarts from 'echarts'
-import { setSteeringAngle } from '@/api/car-api.js'
+import { setSteeringAngle, go, back, stop } from '@/api/car-api.js'
 
 export default {
   name: 'index',
   data () {
     return {
-      speed: [{value: 90, name: '速度'}],
-      steeringAngle: [{value: 15, name: '转向'}],
+      speed: [{value: 0, name: '速度'}],
+      steeringAngle: [{value: 0, name: '转向'}],
       minSteeringAngle: -20,
       maxSteeringAngle: 20,
       minSpeed: 0,
@@ -47,8 +47,23 @@ export default {
       })
     },
 
-    onSpeedChange (value) {
-
+    onSpeedChange () {
+      if (this.direction === '1') {
+        go(this.speed[0].value).then(res => {
+        // res是一个Obj类型，用[]包装成数组
+          console.log(res)
+        })
+      } else if (this.direction === '2') {
+        stop().then(res => {
+        // res是一个Obj类型，用[]包装成数组
+          console.log(res)
+        })
+      } else if (this.direction === '3') {
+        back(this.speed[0].value).then(res => {
+        // res是一个Obj类型，用[]包装成数组
+          console.log(res)
+        })
+      }
     },
 
     setOption (charts) {

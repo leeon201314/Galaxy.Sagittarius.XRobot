@@ -7,3 +7,27 @@ export const setSteeringAngle = (angle) => {
     method: 'get'
   })
 }
+
+// 前进
+export const go = (speed) => {
+  return axios.request({
+    url: '/carMotor/go/' + speed,
+    method: 'get'
+  })
+}
+
+// 后退
+export const back = (speed) => {
+  return axios.request({
+    url: '/carMotor/back/' + speed,
+    method: 'get'
+  })
+}
+
+// 停止
+export const stop = () => {
+  return axios.request({
+    url: '/carMotor/stop',
+    method: 'get'
+  })
+}
