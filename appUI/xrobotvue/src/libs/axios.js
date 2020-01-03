@@ -1,5 +1,5 @@
 import Axios from 'axios'
-var baseURL = 'http://192.168.50.1:8866'
+var baseURL = 'http://192.168.65.127:8866'
 class httpRequest {
   constructor () {
     this.options = {
