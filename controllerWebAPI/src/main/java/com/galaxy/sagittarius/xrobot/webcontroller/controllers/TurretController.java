@@ -38,7 +38,7 @@ public class TurretController {
      * 上下转向
      */
     @ApiOperation(value = "设置上下转动角度", notes = "设置转向角度，默认2号舵机是左右转动舵机，-90到90度之间")
-    @GetMapping("/leftRight/{angle}")
+    @GetMapping("/upDown/{angle}")
     public JSONObject UpDown(@PathVariable(name = "angle") int angle) {
         return SendServoCommand(2, angle);
     }
